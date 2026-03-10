@@ -57,10 +57,10 @@ const Search = ({
   }
 
   return (
-    <div className="my-6">
+    <div className="mt-0 mb-3 md:my-6">
       <form
         onSubmit={handleSubmit}
-        className="w-full space-y-4 flex justify-between gap-8"
+        className="w-full space-y-4 flex justify-between gap-8 flex-col md:flex-row"
       >
           <input
             type="text"

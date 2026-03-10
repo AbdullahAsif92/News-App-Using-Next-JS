@@ -34,7 +34,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
   };
 
   return (
-    <div className="flex justify-center items-center gap-2 mt-8 mb-4">
+    <div className="flex justify-center items-center gap-2 mt-8 mb-4 flex-wrap">
       {currentPage > 1 && (
         <Link
           href={getPageUrl(currentPage - 1)}
