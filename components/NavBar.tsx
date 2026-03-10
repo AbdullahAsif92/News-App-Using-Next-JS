@@ -18,6 +18,9 @@ const NavBar = () => {
           <li>
             <Link href={`/`} className="hover:text-yellow-400">Home</Link>
           </li>
+          <li>
+            <Link href={`/search`} className="hover:text-yellow-400">Search</Link>
+          </li>
           {categories.map(cat => (
             <li key={cat}>
               <Link href={`/category/${cat}`} className="hover:text-yellow-400">
@@ -41,8 +44,11 @@ const NavBar = () => {
         {isClick && (
           <ul className="flex md:hidden flex-col text-white p-4 border-t text-xl gap-1">
             <li>
-            <Link href={`/`} className="hover:text-yellow-400">Home</Link>
-          </li>
+              <Link href={`/`} className="hover:text-yellow-400">Home</Link>
+            </li>
+            <li>
+              <Link href={`/search`} className="hover:text-yellow-400">Search</Link>
+            </li>
             {categories.map(cat => (
               <li key={cat}>
                 <Link href={`/category/${cat}`} className="hover:text-yellow-400">
