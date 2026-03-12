@@ -3,6 +3,7 @@ import FirstNews from "@/components/FirstNews";
 import NewsCard from "@/components/NewsCard";
 import Pagination from "@/components/Pagination";
 import { searchNews } from "@/lib/news";
+import { getNews } from "@/lib/news";
 
 interface SearchPageProps {
   searchParams: Promise<{ 
@@ -20,10 +21,24 @@ const page = async ({ searchParams }: SearchPageProps) => {
   const sortBy = params.sort || 'publishedAt';
   const timeFilter = params.time || 'all';
 
+  const defualtData = await getNews(undefined, currentPage);
+  const { articles: defaultArticles} = defualtData;
   if (!query) {
     return (
       <div className="my-6 flex flex-col gap-6 p-4">
         <Search />
+        {defaultArticles.length > 0 && (
+        <FirstNews articles={defaultArticles[0]} />
+      )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {defaultArticles.slice(1).map((article: any, index: number) => (
+          <NewsCard 
+            key={`${article.url}-${index}-${currentPage}`} 
+            articles={article} 
+          />
+        ))}
+      </div>
       </div>
     );
   }
